@@ -1,21 +1,26 @@
-function checkUsername() {
-    var username = el.value;
-    if (username.length < 5) {
-        elMsg.className = 'warning';
-        elMsg.textContent = 'Not long enough, yet....';
-    }   else {
-        elMsg.textContent = '';
+function checkUsername() {           // Declare function
+    var username = el.value;         // Store username invariable
+    if (username.length < 5) {       // If username < 5 characters
+        elMsg.className = 'warning'; // Change class on message
+        elMsg.textContent = 'Not long enough, yet....';  // Update message
+    }   else {                       // Otherise
+        elMsg.textContent = '';      // Clear the message
     }
 }
 
-function tipUsername() {
-    elMsg.className = 'tip';
-    elMsg.innerHTML = 'Username must be at least 5 characters';
+function tipUsername() {             // Declare function
+    elMsg.className = 'tip';         // Change class for message
+    elMsg.innerHTML = 'Username must be at least 5 characters';     // Add message
 }
 
-var el = document.getElementById('username');
-var elMsg = document.getElementById('feedback');
+var el = document.getElementById('username');              // Username input
+var elMsg = document.getElementById('feedback');           // Element to hold message
 
+// When the username input gains/ loses focus call functions above
+el.addEventListener('focus', tipUsername, false);       // Focus call tipUsername()
+el.addEventListener('blur', checkUsername, false);      // Blur call checkUsername()
 
-el.addEventListener('focus', tipUsername, false);
-el.addEventListener('blur', checkUsername, false);
+/* LONGER VERSION WITH IE8 (and lower) compatibility
+
+if (el.addEventListener) {
+ */
